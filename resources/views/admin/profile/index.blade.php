@@ -125,6 +125,22 @@
                                 </div>
                             </div>
                             <div class="row">
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="cellular" class="form-label">Celular</label>
+                                        <input type="text" name="cellular" id="cellular" class="form-control"
+                                            placeholder="Tu Celular" value="{{Auth::user()->person->cellular}}">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-12">
+                                    <div class="form-group">
+                                        <label for="phone" class="form-label">Teléfono</label>
+                                        <input type="text" name="phone" id="phone" class="form-control"
+                                            placeholder="Tu Teléfono" value="{{Auth::user()->person->phone}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="form-group">
                                     <label for="address" class="form-label">Dirección</label>
                                     <input type="text" name="address" id="address" class="form-control"
