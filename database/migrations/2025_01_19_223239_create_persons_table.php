@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('sex',1);
             $table->string('civil',1);
             $table->string('mail_person',150)->nullable()->unique();
-            $table->string('mail_work',150)->nullable();
+            $table->string('mail_work',150)->nullable()->unique();
             $table->string('phone',20)->nullable();
             $table->string('cellular',15)->nullable();
             $table->string('address',150)->nullable();

@@ -26,9 +26,12 @@ class ProfileUpdateRequest extends FormRequest
             'last_name1' => ['prohibited'], // campos protegidos
             'first_name' => ['prohibited'], // campos protegidos
             'mail_person' =>['nullable', 'email', 'max:150', 'unique:persons,mail_person,'.Auth()->user()->person_id],
+            'mail_work' =>['nullable', 'email', 'max:150', 'unique:persons,mail_work,'.Auth()->user()->person_id],
+            'birthday' => ['prohibited'],
+            'sex' => ['prohibited'],
+            'civil' => ['prohibited'],
             'cellular' => ['nullable', 'max:9'],
-            'birthday' => ['nullable', 'date'],
-            'sex' => ['required','string','in:M,F'],
+            'phone' => ['nullable', 'string'],
             'address' => ['nullable','string','max:150']
         ];
     }

@@ -100,13 +100,13 @@
                                     <div class="form-group">
                                         <label for="birthday" class="form-label">Fecha de Cumpleaños</label>
                                         <input type="date" name="birthday" id="birthday" class="form-control"
-                                            placeholder="Tu Cumpleaños" value="{{Auth::user()->person->birthday}}">
+                                            placeholder="Tu Cumpleaños" value="{{Auth::user()->person->birthday}}" disabled>
                                     </div>
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
                                         <label for="sex" class="form-label">Género</label>
-                                        <select name="sex" id="sex" class="form-select">
+                                        <select name="sex" id="sex" class="form-select" disabled="disabled">
                                             <option {{Auth::user()->person->sex == 'M' ? 'selected' : ''}} value="M">Masculino</option>
                                             <option {{Auth::user()->person->sex == 'F' ? 'selected' : ''}} value="F">Femenino</option>
                                         </select>
@@ -115,7 +115,7 @@
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
                                         <label for="civil" class="form-label">Estado Civil</label>
-                                        <select name="civil" id="civil" class="form-select">
+                                        <select name="civil" id="civil" class="form-select" disabled="disabled">
                                             <option {{Auth::user()->person->civil == 'S' ? 'selected' : ''}} value="S">Soltero</option>
                                             <option {{Auth::user()->person->civil == 'C' ? 'selected' : ''}} value="C">Casado</option>
                                             <option {{Auth::user()->person->civil == 'V' ? 'selected' : ''}} value="V">Viudo</option>

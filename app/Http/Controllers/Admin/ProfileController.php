@@ -21,7 +21,7 @@ class ProfileController extends Controller
         /* $person->first_name = $request->first_name;
         $person->save(); */
 
-        $person->update($request->only(['last_name0', 'last_name1', 'first_name', 'mail_person', 'cellular', 'birthday', 'sex', 'address']));
+        $person->update($request->only(['mail_person', 'mail_work', 'cellular', 'phone', 'address']));
 
         return redirect()->back();
     }
