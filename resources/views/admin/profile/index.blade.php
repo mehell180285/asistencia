@@ -30,7 +30,6 @@
 
                             <h3 class="mt-3">{{Auth::user()->person->first_name}}</h3>
                             <p class="text-small">{{Auth::user()->rol->name}}</p>
-                            <p class="text-small">{{Auth::user()->person->numdoc}}</p>
                         </div>
                     </div>
                 </div>
