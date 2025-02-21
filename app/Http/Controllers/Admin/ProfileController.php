@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\ProfileUpdateRequest;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Admin\ProfileUpdateRequest;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class ProfileController extends Controller
 {
@@ -18,11 +21,29 @@ class ProfileController extends Controller
         $user = Auth::user();
         $person =$user->person;
 
-        /* $person->first_name = $request->first_name;
-        $person->save(); */
+        if ($request->hasFile('image')) {
 
-        $person->update($request->only(['mail_person', 'mail_work', 'cellular', 'phone', 'address']));
+            if ($user->image && Storage::exists(str_replace('/storage/', 'public/', $user->image))) {
+                Storage::delete(str_replace('/storage/', 'public/', $user->image));
+            }
 
+            $image = $request->image;
+            $imageName = Str::random(10).'_'.$image->getClientOriginalName();
+            $path = $image->storeAs('public/uploads', $imageName);
+            
+            $user->image = Storage::url($path);
+            $user->save();
+        }
+        
+        $person->mail_person = $request->mail_person;
+        $person->mail_work = $request->mail_work;
+        $person->cellular = $request->cellular;
+        $person->phone = $request->phone;
+        $person->address = $request->address;
+
+        $person->save();
+
+        /* $person->update($request->only(['mail_person', 'mail_work', 'cellular', 'phone', 'address'])); */
         return redirect()->back();
     }
 }

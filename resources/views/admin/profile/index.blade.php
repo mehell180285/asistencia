@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-center align-items-center flex-column">
                             <div class="avatar avatar-2xl">
-                                <img src="{{asset('assets/compiled/jpg/1.jpg')}}" alt="Avatar">
+                                <img src="{{ Auth::user()->image ? asset(Auth::user()->image) : asset('assets/compiled/jpg/1.jpg') }}" alt="Imagen de perfil">
                             </div>
 
                             <h3 class="mt-3">{{Auth::user()->person->first_name}}</h3>
@@ -37,8 +37,16 @@
             <div class="col-12 col-lg-8">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{route('admin.profile.update')}}" method="POST">
+                        <form action="{{route('admin.profile.update')}}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <label for="image" class="form-label">Imágen de Perfil</label>
+                                        <input class="form-control" name="image" type="file" id="image">
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">
@@ -86,13 +94,6 @@
                                             placeholder="Tu Correo de Trabajo" value="{{Auth::user()->person->mail_work}}">
                                     </div>
                                 </div>
-                                {{-- <div class="col-md-6 col-12">
-                                    <div class="form-group">
-                                        <label for="cellular" class="form-label">Celular</label>
-                                        <input type="text" name="cellular" id="cellular" class="form-control"
-                                            placeholder="Tu Celular" value="{{Auth::user()->person->cellular}}">
-                                    </div>
-                                </div> --}}
                             </div>
                             <div class="row">
                                 <div class="col-md-4 col-12">
@@ -135,7 +136,7 @@
                                     <div class="form-group">
                                         <label for="phone" class="form-label">Teléfono</label>
                                         <input type="text" name="phone" id="phone" class="form-control"
-                                            placeholder="Tu Teléfono" value="{{Auth::user()->person->phone}}">
+                                            placeholder="Tu Teléfono" value="{{Auth::user()->person->phone}}" autocomplete="tel">
                                     </div>
                                 </div>
                             </div>
