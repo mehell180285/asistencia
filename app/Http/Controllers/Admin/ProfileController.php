@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\PasswordUpdateRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Admin\ProfileUpdateRequest;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
 
 class ProfileController extends Controller
 {
@@ -16,11 +16,13 @@ class ProfileController extends Controller
         return view('admin.profile.index');
     }
 
+    /* Actualizar Perfil */
     public function updateProfile(ProfileUpdateRequest $request)
     {
         $user = Auth::user();
         $person =$user->person;
 
+        /* Carga de imagen de perfil */
         if ($request->hasFile('image')) {
 
             if ($user->image && Storage::exists(str_replace('/storage/', 'public/', $user->image))) {
@@ -44,6 +46,16 @@ class ProfileController extends Controller
         $person->save();
 
         /* $person->update($request->only(['mail_person', 'mail_work', 'cellular', 'phone', 'address'])); */
+        return redirect()->back();
+    }
+
+    /* Actualizar Contraseña */
+    public function updatePassword(PasswordUpdateRequest $request)
+    {
+        $request->user()->update([
+            'password' => bcrypt($request->password)
+        ]);
+
         return redirect()->back();
     }
 }

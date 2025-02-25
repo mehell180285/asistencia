@@ -35,8 +35,12 @@
                 </div>
             </div>
             <div class="col-12 col-lg-8">
-                <div class="card">
+                <div class="card"> 
+                    <div class="card-header text-center">
+                        <h4 class="card-title">Actualizar Perfil</h4>
+                    </div> 
                     <div class="card-body">
+                        {{-- Formulario para actualizacion de perfil --}}
                         <form action="{{route('admin.profile.update')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
@@ -149,6 +153,38 @@
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h4 class="card-title">Actualizar Contraseña</h4>
+                    </div> 
+                    <div class="card-body">
+                        {{-- Formulario para actualizar contraseña --}}
+                        <form action="{{route('admin.password.update')}}" method="POST">
+                            @csrf
+                            <div class="row">
+                                <div class="form-group">
+                                    <label for="current_password" class="form-label">Contraseña Actual</label>
+                                    <input type="password" name="current_password" id="current_password" class="form-control" placeholder="Ingrese su contraseña actual">
+                                </div>
+    
+                                <div class="form-group">
+                                    <label for="password" class="form-label">Contraseña Nueva</label>
+                                    <input type="password" name="password" id="password" class="form-control" placeholder="Ingrese su contraseña nueva">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="password_confirmation" class="form-label">Confirma su contraseña</label>
+                                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Confirme su contraseña">
+                                </div>
+    
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Actualizar contraseña</button>
+                                </div>
                             </div>
                         </form>
                     </div>
