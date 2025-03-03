@@ -46,6 +46,7 @@ class ProfileController extends Controller
         $person->save();
 
         /* $person->update($request->only(['mail_person', 'mail_work', 'cellular', 'phone', 'address'])); */
+        toastr()->success('Perfil Actualizado Correctamente');
         return redirect()->back();
     }
 
@@ -56,6 +57,7 @@ class ProfileController extends Controller
             'password' => bcrypt($request->password)
         ]);
 
+        toastr()->success('Contraseña actualizado correctamente');
         return redirect()->back();
     }
 }

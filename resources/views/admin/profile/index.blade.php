@@ -58,15 +58,6 @@
                                         <input type="text" name="last_name0" id="last_name0" class="form-control"
                                             placeholder="Tu Apellido Paterno" value="{{Auth::user()->person->last_name0}}" disabled>
                                     </div>
-                                    @if ($errors->any())
-                                        <div class="alert alert-danger">
-                                            <ul>
-                                                @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    @endif
                                 </div>
                                 <div class="col-md-4 col-12">
                                     <div class="form-group">

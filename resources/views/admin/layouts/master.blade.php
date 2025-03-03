@@ -8,6 +8,8 @@
     <link rel="icon" href="data:,">
     <link rel="stylesheet" crossorigin href="{{asset('assets/compiled/css/app.css')}}">
     <link rel="stylesheet" crossorigin href="{{asset('assets/compiled/css/app-dark.css')}}">
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 
 <body>
@@ -33,8 +35,19 @@
         </div>
     </div>
     
+    <script src="{{asset('assets/extensions/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('assets/static/js/components/dark.js')}}"></script>
     <script src="{{asset('assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
     <script src="{{asset('assets/compiled/js/app.js')}}"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                toastr.error("{{$error}}")
+            @endforeach
+        @endif
+    </script>
 </body>
 </html>
