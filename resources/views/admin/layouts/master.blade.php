@@ -10,6 +10,9 @@
     <link rel="stylesheet" crossorigin href="{{asset('assets/compiled/css/app-dark.css')}}">
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <!-- CSS específicos de cada página -->
+    @stack('styles')
 </head>
 
 <body>
@@ -39,7 +42,7 @@
     <script src="{{asset('assets/static/js/components/dark.js')}}"></script>
     <script src="{{asset('assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
     <script src="{{asset('assets/compiled/js/app.js')}}"></script>
-
+    
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script>
@@ -49,5 +52,8 @@
             @endforeach
         @endif
     </script>
+    
+    <!-- JS específicos de cada página -->
+    @stack('scripts')
 </body>
 </html>
